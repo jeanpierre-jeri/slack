@@ -1,0 +1,41 @@
+{
+	"name": "patreon",
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"format": "prettier --write .",
+		"lint": "prettier --check . && eslint .",
+		"test:unit": "vitest",
+		"test": "npm run test:unit -- --run"
+	},
+	"devDependencies": {
+		"@sveltejs/kit": "2.7.4",
+		"@sveltejs/vite-plugin-svelte": "4.0.0",
+		"@tailwindcss/forms": "0.5.9",
+		"@types/eslint": "9.6.1",
+		"autoprefixer": "10.4.20",
+		"eslint": "9.14.0",
+		"eslint-config-prettier": "9.1.0",
+		"eslint-plugin-svelte": "2.46.0",
+		"globals": "15.11.0",
+		"prettier": "3.3.3",
+		"prettier-plugin-svelte": "3.2.7",
+		"prettier-plugin-tailwindcss": "0.6.8",
+		"svelte": "5.1.9",
+		"svelte-check": "4.0.5",
+		"tailwindcss": "3.4.9",
+		"typescript": "5.6.3",
+		"typescript-eslint": "8.12.2",
+		"vite": "5.4.10",
+		"vitest": "2.1.4"
+	},
+	"dependencies": {
+		"@types/deno": "2.0.0",
+		"sveltekit-adapter-deno": "0.16.1"
+	}
+}
