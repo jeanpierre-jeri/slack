@@ -1,4 +1,4 @@
-<h1>Welcome to SvelteKit</h1>
-<p>
-	Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation!!
-</p>
+<main class="flex grow flex-col items-center justify-center">
+	<h1 class="text-6xl font-bold">Codify</h1>
+	<p class="text-xl">Level up your coding journey</p>
+</main>

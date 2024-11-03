@@ -1,9 +1,11 @@
 {
   "version": "4",
   "specifiers": {
+    "npm:@fontsource-variable/inconsolata@5.1.0": "5.1.0",
     "npm:@sveltejs/kit@2.7.4": "2.7.4_@sveltejs+vite-plugin-svelte@4.0.0__svelte@5.1.9___acorn@8.14.0__vite@5.4.10_svelte@5.1.9__acorn@8.14.0_vite@5.4.10",
     "npm:@sveltejs/vite-plugin-svelte@4.0.0": "4.0.0_svelte@5.1.9__acorn@8.14.0_vite@5.4.10",
     "npm:@tailwindcss/forms@0.5.9": "0.5.9_tailwindcss@3.4.9__postcss@8.4.47",
+    "npm:@tailwindcss/typography@0.5.15": "0.5.15_tailwindcss@3.4.9__postcss@8.4.47",
     "npm:@types/deno@2.0.0": "2.0.0",
     "npm:@types/eslint@9.6.1": "9.6.1",
     "npm:autoprefixer@10.4.20": "10.4.20_postcss@8.4.47",
@@ -222,6 +224,9 @@
         "levn"
       ]
     },
+    "@fontsource-variable/inconsolata@5.1.0": {
+      "integrity": "sha512-ZijDHmf182b65LHGtCwcuNi4iq1k1FDBYSrWJvLkZfISWPSv5ODUS4f1T6jgdQvDCUW+fgh4dZoaVaO2CPJJ4g=="
+    },
     "@humanfs/core@0.19.1": {
       "integrity": "sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA=="
     },
@@ -399,6 +404,16 @@
       "integrity": "sha512-tM4XVr2+UVTxXJzey9Twx48c1gcxFStqn1pQz0tRsX8o3DvxhN5oY5pvyAbUx7VTaZxpej4Zzvc6h+1RJBzpIg==",
       "dependencies": [
         "mini-svg-data-uri",
+        "tailwindcss"
+      ]
+    },
+    "@tailwindcss/typography@0.5.15_tailwindcss@3.4.9__postcss@8.4.47": {
+      "integrity": "sha512-AqhlCXl+8grUz8uqExv5OTtgpjuVIwFTSXTrh8y9/pw6q2ek7fJ+Y8ZEVw7EB2DCcuCOtEjf9w3+J3rzts01uA==",
+      "dependencies": [
+        "lodash.castarray",
+        "lodash.isplainobject",
+        "lodash.merge",
+        "postcss-selector-parser@6.0.10",
         "tailwindcss"
       ]
     },
@@ -864,7 +879,7 @@
         "postcss",
         "postcss-load-config@3.1.4_postcss@8.4.47",
         "postcss-safe-parser",
-        "postcss-selector-parser",
+        "postcss-selector-parser@6.1.2",
         "semver",
         "svelte",
         "svelte-eslint-parser"
@@ -1217,6 +1232,12 @@
         "p-locate"
       ]
     },
+    "lodash.castarray@4.4.0": {
+      "integrity": "sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q=="
+    },
+    "lodash.isplainobject@4.0.6": {
+      "integrity": "sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA=="
+    },
     "lodash.merge@4.6.2": {
       "integrity": "sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ=="
     },
@@ -1400,7 +1421,7 @@
       "integrity": "sha512-HQbt28KulC5AJzG+cZtj9kvKB93CFCdLvog1WFLf1D+xmMvPGlBstkpTEZfK5+AN9hfJocyBFCNiqyS48bpgzQ==",
       "dependencies": [
         "postcss",
-        "postcss-selector-parser"
+        "postcss-selector-parser@6.1.2"
       ]
     },
     "postcss-safe-parser@6.0.0_postcss@8.4.47": {
@@ -1413,6 +1434,13 @@
       "integrity": "sha512-AjKOeiwAitL/MXxQW2DliT28EKukvvbEWx3LBmJIRN8KfBGZbRTxNYW0kSqi1COiTZ57nZ9NW06S6ux//N1c9A==",
       "dependencies": [
         "postcss"
+      ]
+    },
+    "postcss-selector-parser@6.0.10": {
+      "integrity": "sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==",
+      "dependencies": [
+        "cssesc",
+        "util-deprecate"
       ]
     },
     "postcss-selector-parser@6.1.2": {
@@ -1685,7 +1713,7 @@
         "postcss-js",
         "postcss-load-config@4.0.2_postcss@8.4.47",
         "postcss-nested",
-        "postcss-selector-parser",
+        "postcss-selector-parser@6.1.2",
         "resolve",
         "sucrase"
       ]
@@ -1876,9 +1904,11 @@
   "workspace": {
     "packageJson": {
       "dependencies": [
+        "npm:@fontsource-variable/inconsolata@5.1.0",
         "npm:@sveltejs/kit@2.7.4",
         "npm:@sveltejs/vite-plugin-svelte@4.0.0",
         "npm:@tailwindcss/forms@0.5.9",
+        "npm:@tailwindcss/typography@0.5.15",
         "npm:@types/deno@2.0.0",
         "npm:@types/eslint@9.6.1",
         "npm:autoprefixer@10.4.20",
