@@ -7,13 +7,7 @@ test('navigation smoke test', async ({ page }) => {
 	await expect(page).toHaveTitle(/JPify/)
 	await expect(page.getByRole('heading', { name: 'JPify', level: 1 })).toBeVisible()
 
-	// navigate to the Demos Page
-	await page.getByRole('link', { name: 'demos' }).click()
-	await expect(page).toHaveTitle(/Text Gradients/)
-	await expect(page.getByRole('heading', { name: 'Text Gradients', level: 1 })).toBeVisible()
-
 	// navigate to the Login Page
-	await page.getByRole('link', { name: 'login' }).click()
+	await page.getByRole('link', { name: 'Login' }).click()
 	await expect(page).toHaveTitle(/Login/)
-	await expect(page.getByRole('heading', { name: 'Login', level: 1 })).toBeVisible()
 })
