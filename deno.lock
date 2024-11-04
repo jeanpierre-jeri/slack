@@ -1,6 +1,7 @@
 {
   "version": "4",
   "specifiers": {
+    "npm:@auth/pg-adapter@1.7.2": "1.7.2_pg@8.13.0",
     "npm:@auth/sveltekit@1.7.2": "1.7.2_@sveltejs+kit@2.7.4__@sveltejs+vite-plugin-svelte@4.0.0___svelte@5.1.9____acorn@8.14.0___vite@5.4.10__svelte@5.1.9___acorn@8.14.0__vite@5.4.10_svelte@5.1.9__acorn@8.14.0_@sveltejs+vite-plugin-svelte@4.0.0__svelte@5.1.9___acorn@8.14.0__vite@5.4.10_vite@5.4.10",
     "npm:@fontsource-variable/inconsolata@5.1.0": "5.1.0",
     "npm:@sveltejs/kit@2.7.4": "2.7.4_@sveltejs+vite-plugin-svelte@4.0.0__svelte@5.1.9___acorn@8.14.0__vite@5.4.10_svelte@5.1.9__acorn@8.14.0_vite@5.4.10",
@@ -9,11 +10,13 @@
     "npm:@tailwindcss/typography@0.5.15": "0.5.15_tailwindcss@3.4.9__postcss@8.4.47",
     "npm:@types/deno@2.0.0": "2.0.0",
     "npm:@types/eslint@9.6.1": "9.6.1",
+    "npm:@types/pg@8.11.10": "8.11.10",
     "npm:autoprefixer@10.4.20": "10.4.20_postcss@8.4.47",
     "npm:eslint-config-prettier@9.1.0": "9.1.0_eslint@9.14.0",
     "npm:eslint-plugin-svelte@2.46.0": "2.46.0_eslint@9.14.0_svelte@5.1.9__acorn@8.14.0_postcss@8.4.47",
     "npm:eslint@9.14.0": "9.14.0",
     "npm:globals@15.11.0": "15.11.0",
+    "npm:pg@8.13.1": "8.13.1",
     "npm:prettier-plugin-svelte@3.2.7": "3.2.7_prettier@3.3.3_svelte@5.1.9__acorn@8.14.0",
     "npm:prettier-plugin-tailwindcss@0.6.8": "0.6.8_prettier@3.3.3_prettier-plugin-svelte@3.2.7__prettier@3.3.3__svelte@5.1.9___acorn@8.14.0_svelte@5.1.9__acorn@8.14.0",
     "npm:prettier@3.3.3": "3.3.3",
@@ -47,6 +50,13 @@
         "oauth4webapi",
         "preact",
         "preact-render-to-string"
+      ]
+    },
+    "@auth/pg-adapter@1.7.2_pg@8.13.0": {
+      "integrity": "sha512-0NUgTLRMmVhGzxIcRpN6FGT4Q4yOEinJ1I12PpDB6Th4OcWvOEbTgfsLSVCHiY00s2fbl3U3XRr/4tLzhIUjUw==",
+      "dependencies": [
+        "@auth/core",
+        "pg@8.13.0"
       ]
     },
     "@auth/sveltekit@1.7.2_@sveltejs+kit@2.7.4__@sveltejs+vite-plugin-svelte@4.0.0___svelte@5.1.9____acorn@8.14.0___vite@5.4.10__svelte@5.1.9___acorn@8.14.0__vite@5.4.10_svelte@5.1.9__acorn@8.14.0_@sveltejs+vite-plugin-svelte@4.0.0__svelte@5.1.9___acorn@8.14.0__vite@5.4.10_vite@5.4.10": {
@@ -460,6 +470,20 @@
     },
     "@types/json-schema@7.0.15": {
       "integrity": "sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA=="
+    },
+    "@types/node@22.5.4": {
+      "integrity": "sha512-FDuKUJQm/ju9fT/SeX/6+gBzoPzlVCzfzmGkwKvRHQVxi4BntVbyIwf6a4Xn62mrvndLiml6z/UBXIdEVjQLXg==",
+      "dependencies": [
+        "undici-types"
+      ]
+    },
+    "@types/pg@8.11.10": {
+      "integrity": "sha512-LczQUW4dbOQzsH2RQ5qoeJ6qJPdrcM/DcMLoqWQkMLMsq83J5lAX3LXjdkWdpscFy67JSOWDnh7Ny/sPFykmkg==",
+      "dependencies": [
+        "@types/node",
+        "pg-protocol",
+        "pg-types@4.0.2"
+      ]
     },
     "@typescript-eslint/eslint-plugin@8.12.2_@typescript-eslint+parser@8.12.2__eslint@9.14.0__typescript@5.6.3_eslint@9.14.0_typescript@5.6.3": {
       "integrity": "sha512-gQxbxM8mcxBwaEmWdtLCIGLfixBMHhQjBqR8sVWNTPpcj45WlYL2IObS/DNMLH1DBP0n8qz+aiiLTGfopPEebw==",
@@ -1353,6 +1377,9 @@
     "object-hash@3.0.0": {
       "integrity": "sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw=="
     },
+    "obuf@1.1.2": {
+      "integrity": "sha512-PX1wu0AmAdPqOL1mWhqmlOd8kOIZQwGZw6rh7uby9fTc5lhaOWFLX3I6R1hrF9k3zUY40e6igsLGkDXK92LJNg=="
+    },
     "optionator@0.9.4": {
       "integrity": "sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==",
       "dependencies": [
@@ -1406,6 +1433,83 @@
     },
     "pathval@2.0.0": {
       "integrity": "sha512-vE7JKRyES09KiunauX7nd2Q9/L7lhok4smP9RZTDeD4MVs72Dp2qNFVz39Nz5a0FVEW0BJR6C0DYrq6unoziZA=="
+    },
+    "pg-cloudflare@1.1.1": {
+      "integrity": "sha512-xWPagP/4B6BgFO+EKz3JONXv3YDgvkbVrGw2mTo3D6tVDQRh1e7cqVGvyR3BE+eQgAvx1XhW/iEASj4/jCWl3Q=="
+    },
+    "pg-connection-string@2.7.0": {
+      "integrity": "sha512-PI2W9mv53rXJQEOb8xNR8lH7Hr+EKa6oJa38zsK0S/ky2er16ios1wLKhZyxzD7jUReiWokc9WK5nxSnC7W1TA=="
+    },
+    "pg-int8@1.0.1": {
+      "integrity": "sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw=="
+    },
+    "pg-numeric@1.0.2": {
+      "integrity": "sha512-BM/Thnrw5jm2kKLE5uJkXqqExRUY/toLHda65XgFTBTFYZyopbKjBe29Ii3RbkvlsMoFwD+tHeGaCjjv0gHlyw=="
+    },
+    "pg-pool@3.7.0_pg@8.13.0": {
+      "integrity": "sha512-ZOBQForurqh4zZWjrgSwwAtzJ7QiRX0ovFkZr2klsen3Nm0aoh33Ls0fzfv3imeH/nw/O27cjdz5kzYJfeGp/g==",
+      "dependencies": [
+        "pg@8.13.0"
+      ]
+    },
+    "pg-pool@3.7.0_pg@8.13.1": {
+      "integrity": "sha512-ZOBQForurqh4zZWjrgSwwAtzJ7QiRX0ovFkZr2klsen3Nm0aoh33Ls0fzfv3imeH/nw/O27cjdz5kzYJfeGp/g==",
+      "dependencies": [
+        "pg@8.13.1"
+      ]
+    },
+    "pg-protocol@1.7.0": {
+      "integrity": "sha512-hTK/mE36i8fDDhgDFjy6xNOG+LCorxLG3WO17tku+ij6sVHXh1jQUJ8hYAnRhNla4QVD2H8er/FOjc/+EgC6yQ=="
+    },
+    "pg-types@2.2.0": {
+      "integrity": "sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==",
+      "dependencies": [
+        "pg-int8",
+        "postgres-array@2.0.0",
+        "postgres-bytea@1.0.0",
+        "postgres-date@1.0.7",
+        "postgres-interval@1.2.0"
+      ]
+    },
+    "pg-types@4.0.2": {
+      "integrity": "sha512-cRL3JpS3lKMGsKaWndugWQoLOCoP+Cic8oseVcbr0qhPzYD5DWXK+RZ9LY9wxRf7RQia4SCwQlXk0q6FCPrVng==",
+      "dependencies": [
+        "pg-int8",
+        "pg-numeric",
+        "postgres-array@3.0.2",
+        "postgres-bytea@3.0.0",
+        "postgres-date@2.1.0",
+        "postgres-interval@3.0.0",
+        "postgres-range"
+      ]
+    },
+    "pg@8.13.0": {
+      "integrity": "sha512-34wkUTh3SxTClfoHB3pQ7bIMvw9dpFU1audQQeZG837fmHfHpr14n/AELVDoOYVDW2h5RDWU78tFjkD+erSBsw==",
+      "dependencies": [
+        "pg-cloudflare",
+        "pg-connection-string",
+        "pg-pool@3.7.0_pg@8.13.0",
+        "pg-protocol",
+        "pg-types@2.2.0",
+        "pgpass"
+      ]
+    },
+    "pg@8.13.1": {
+      "integrity": "sha512-OUir1A0rPNZlX//c7ksiu7crsGZTKSOXJPgtNiHGIlC9H0lO+NC6ZDYksSgBYY/thSWhnSRBv8w1lieNNGATNQ==",
+      "dependencies": [
+        "pg-cloudflare",
+        "pg-connection-string",
+        "pg-pool@3.7.0_pg@8.13.1",
+        "pg-protocol",
+        "pg-types@2.2.0",
+        "pgpass"
+      ]
+    },
+    "pgpass@1.0.5": {
+      "integrity": "sha512-FdW9r/jQZhSeohs1Z3sI1yxFQNFvMcnmfuj4WBMUTxOrAyLMaTcE1aAMBiTlbMNaXvBCQuVi0R7hd8udDSP7ug==",
+      "dependencies": [
+        "split2"
+      ]
     },
     "picocolors@1.1.1": {
       "integrity": "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA=="
@@ -1494,6 +1598,39 @@
         "picocolors",
         "source-map-js"
       ]
+    },
+    "postgres-array@2.0.0": {
+      "integrity": "sha512-VpZrUqU5A69eQyW2c5CA1jtLecCsN2U/bD6VilrFDWq5+5UIEVO7nazS3TEcHf1zuPYO/sqGvUvW62g86RXZuA=="
+    },
+    "postgres-array@3.0.2": {
+      "integrity": "sha512-6faShkdFugNQCLwucjPcY5ARoW1SlbnrZjmGl0IrrqewpvxvhSLHimCVzqeuULCbG0fQv7Dtk1yDbG3xv7Veog=="
+    },
+    "postgres-bytea@1.0.0": {
+      "integrity": "sha512-xy3pmLuQqRBZBXDULy7KbaitYqLcmxigw14Q5sj8QBVLqEwXfeybIKVWiqAXTlcvdvb0+xkOtDbfQMOf4lST1w=="
+    },
+    "postgres-bytea@3.0.0": {
+      "integrity": "sha512-CNd4jim9RFPkObHSjVHlVrxoVQXz7quwNFpz7RY1okNNme49+sVyiTvTRobiLV548Hx/hb1BG+iE7h9493WzFw==",
+      "dependencies": [
+        "obuf"
+      ]
+    },
+    "postgres-date@1.0.7": {
+      "integrity": "sha512-suDmjLVQg78nMK2UZ454hAG+OAW+HQPZ6n++TNDUX+L0+uUlLywnoxJKDou51Zm+zTCjrCl0Nq6J9C5hP9vK/Q=="
+    },
+    "postgres-date@2.1.0": {
+      "integrity": "sha512-K7Juri8gtgXVcDfZttFKVmhglp7epKb1K4pgrkLxehjqkrgPhfG6OO8LHLkfaqkbpjNRnra018XwAr1yQFWGcA=="
+    },
+    "postgres-interval@1.2.0": {
+      "integrity": "sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ==",
+      "dependencies": [
+        "xtend"
+      ]
+    },
+    "postgres-interval@3.0.0": {
+      "integrity": "sha512-BSNDnbyZCXSxgA+1f5UU2GmwhoI0aU5yMxRGO8CdFEcY2BQF9xm/7MqKnYoM1nJDk8nONNWDk9WeSmePFhQdlw=="
+    },
+    "postgres-range@1.1.4": {
+      "integrity": "sha512-i/hbxIE9803Alj/6ytL7UHQxRvZkI9O4Sy+J3HGc4F4oo/2eQAjTSNJ0bfxyse3bH0nuVesCk+3IRLaMtG3H6w=="
     },
     "preact-render-to-string@5.2.3_preact@10.11.3": {
       "integrity": "sha512-aPDxUn5o3GhWdtJtW0svRC2SS/l8D9MAgo2+AWml+BhDImb27ALf04Q2d+AHqUUOc6RdSXFIBVa2gxzgMKgtZA==",
@@ -1631,6 +1768,9 @@
     },
     "source-map-js@1.2.1": {
       "integrity": "sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA=="
+    },
+    "split2@4.2.0": {
+      "integrity": "sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg=="
     },
     "stackback@0.0.2": {
       "integrity": "sha512-1XMJE5fQo1jGH6Y/7ebnwPOBEkIEnT4QF32d5R1+VXdXveM0IBMJt8zfaxX1P3QhVwrYe+576+jkANtSS2mBbw=="
@@ -1837,6 +1977,9 @@
     "typescript@5.6.3": {
       "integrity": "sha512-hjcS1mhfuyi4WW8IWtjP7brDrG2cuDZukyrYrSauoXGNgx0S7zceP07adYkJycEr56BOUTNPzbInooiN3fn1qw=="
     },
+    "undici-types@6.19.8": {
+      "integrity": "sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw=="
+    },
     "update-browserslist-db@1.1.1_browserslist@4.24.2": {
       "integrity": "sha512-R8UzCaa9Az+38REPiJ1tXlImTJXlVfgHZsglwBD/k6nj76ctsH1E3q4doGrukiLQd3sGQYu56r5+lo5r94l29A==",
       "dependencies": [
@@ -1935,6 +2078,9 @@
         "strip-ansi@7.1.0"
       ]
     },
+    "xtend@4.0.2": {
+      "integrity": "sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ=="
+    },
     "yaml@1.10.2": {
       "integrity": "sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg=="
     },
@@ -1951,6 +2097,7 @@
   "workspace": {
     "packageJson": {
       "dependencies": [
+        "npm:@auth/pg-adapter@1.7.2",
         "npm:@auth/sveltekit@1.7.2",
         "npm:@fontsource-variable/inconsolata@5.1.0",
         "npm:@sveltejs/kit@2.7.4",
@@ -1959,12 +2106,13 @@
         "npm:@tailwindcss/typography@0.5.15",
         "npm:@types/deno@2.0.0",
         "npm:@types/eslint@9.6.1",
+        "npm:@types/pg@8.11.10",
         "npm:autoprefixer@10.4.20",
         "npm:eslint-config-prettier@9.1.0",
         "npm:eslint-plugin-svelte@2.46.0",
         "npm:eslint@9.14.0",
         "npm:globals@15.11.0",
-        "npm:postgres@3.4.5",
+        "npm:pg@8.13.1",
         "npm:prettier-plugin-svelte@3.2.7",
         "npm:prettier-plugin-tailwindcss@0.6.8",
         "npm:prettier@3.3.3",

@@ -1,8 +1,25 @@
 import PostgresAdapter from '@auth/pg-adapter'
 import { SvelteKitAuth } from '@auth/sveltekit'
-import { sql } from './db'
+import { pool } from './db'
+import GitHub from '@auth/sveltekit/providers/github'
 
-export const { handle } = SvelteKitAuth({
-	adapter: PostgresAdapter(sql),
-	providers: [],
+export const { handle, signIn } = SvelteKitAuth({
+	adapter: PostgresAdapter(pool),
+	providers: [GitHub],
+	callbacks: {
+		session: async ({ session, user }) => {
+			const { id, name, image, email } = user
+			const { expires } = session
+
+			return {
+				user: {
+					id,
+					name,
+					image,
+					email,
+				},
+				expires,
+			}
+		},
+	},
 })

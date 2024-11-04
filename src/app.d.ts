@@ -1,8 +1,8 @@
-import type { Sql } from 'postgres'
+import type { PoolClient } from 'pg'
 declare global {
 	namespace App {
 		interface Locals {
-			sql: Sql
+			client: PoolClient
 		}
 
 		// interface Error {}
