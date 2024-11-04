@@ -6,6 +6,7 @@ import GitHub from '@auth/sveltekit/providers/github'
 export const { handle, signIn } = SvelteKitAuth({
 	adapter: PostgresAdapter(pool),
 	providers: [GitHub],
+	trustHost: true,
 	callbacks: {
 		session: async ({ session, user }) => {
 			const { id, name, image, email } = user
