@@ -1,5 +1,6 @@
 <script lang="ts">
-	import AuthScreen from '@/features/auth/components/auth-screen.svelte'
+	import Button from '@/lib/components/ui/button/button.svelte'
+	import { signOut } from '@auth/sveltekit/client'
 
 	const { data } = $props()
 </script>
@@ -8,4 +9,8 @@
 	<title>Slack</title>
 </svelte:head>
 
-<AuthScreen />
+<div>
+	Logged in
+
+	<Button onclick={() => signOut({ callbackUrl: '/auth' })}>Sign out</Button>
+</div>

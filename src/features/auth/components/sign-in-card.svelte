@@ -10,6 +10,7 @@
 	import Input from '@/lib/components/ui/input/input.svelte'
 	import Separator from '@/lib/components/ui/separator/separator.svelte'
 	import type { SignInFlow } from './types'
+	import { signIn } from '@auth/sveltekit/client'
 
 	interface Props {
 		setState: (state: SignInFlow) => void
@@ -47,7 +48,7 @@
 
 			<Button
 				disabled={false}
-				onclick={() => {}}
+				onclick={() => signIn('github', { callbackUrl: '/' })}
 				variant="outline"
 				class="grid w-full grid-cols-[auto_1fr]"
 			>

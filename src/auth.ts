@@ -3,7 +3,7 @@ import { SvelteKitAuth } from '@auth/sveltekit'
 import { pool } from './db'
 import GitHub from '@auth/sveltekit/providers/github'
 
-export const { handle, signIn } = SvelteKitAuth({
+export const { handle, signIn, signOut } = SvelteKitAuth({
 	adapter: PostgresAdapter(pool),
 	providers: [GitHub],
 	trustHost: true,
