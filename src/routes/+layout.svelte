@@ -5,5 +5,8 @@
 	let { children, data } = $props()
 </script>
 
+<svelte:head>
+	<title>JPify</title>
+</svelte:head>
 <Header session={data.session} />
 {@render children()}

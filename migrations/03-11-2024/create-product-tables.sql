@@ -1,73 +1,3 @@
-DROP TABLE IF EXISTS public.verification_token;
-
-CREATE TABLE public.verification_token (
-  identifier TEXT NOT NULL,
-  expires TIMESTAMPTZ NOT NULL,
-  token TEXT NOT NULL,
-  PRIMARY KEY (identifier, token)
-);
-
-ALTER TABLE
-  public.verification_token ENABLE ROW LEVEL SECURITY;
-
-DROP TABLE IF EXISTS public.accounts;
-
-CREATE TABLE public.accounts (
-  id BIGSERIAL,
-  "userId" BIGINT NOT NULL,
-  type TEXT NOT NULL,
-  provider TEXT NOT NULL,
-  "providerAccountId" TEXT NOT NULL,
-  refresh_token TEXT,
-  access_token TEXT,
-  expires_at BIGINT,
-  id_token TEXT,
-  scope TEXT,
-  session_state TEXT,
-  token_type TEXT,
-  PRIMARY KEY (id)
-);
-
-ALTER TABLE
-  public.accounts ENABLE ROW LEVEL SECURITY;
-
-DROP TABLE IF EXISTS public.sessions;
-
-CREATE TABLE public.sessions (
-  id BIGSERIAL,
-  "userId" BIGINT NOT NULL,
-  expires TIMESTAMPTZ NOT NULL,
-  "sessionToken" TEXT NOT NULL,
-  PRIMARY KEY (id)
-);
-
-ALTER TABLE
-  public.sessions ENABLE ROW LEVEL SECURITY;
-
-DROP TABLE IF EXISTS public.users;
-
-CREATE TABLE public.users (
-  id BIGSERIAL,
-  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  name TEXT,
-  email TEXT,
-  "emailVerified" TIMESTAMPTZ,
-  image TEXT,
-  PRIMARY KEY (id)
-);
-
-ALTER TABLE
-  public.users ENABLE ROW LEVEL SECURITY;
-
-CREATE TABLE public.customers (
-  id BIGINT REFERENCES public.users NOT NULL,
-  stripe_customer_id text,
-  PRIMARY KEY(id)
-);
-
-ALTER TABLE
-  public.customers ENABLE ROW LEVEL SECURITY;
-
 DROP TABLE IF EXISTS public.products;
 
 CREATE TABLE public.products (
@@ -148,12 +78,13 @@ ALTER TABLE
   public.subscriptions ENABLE ROW LEVEL SECURITY;
 
 CREATE
-OR REPLACE FUNCTION notify_product_changes() RETURNS TRIGGER AS $$ 
-BEGIN
-PERFORM pg_notify('product_changes', row_to_json(NEW)::text);
+OR REPLACE FUNCTION notify_product_changes() RETURNS TRIGGER AS $ $ BEGIN PERFORM pg_notify('product_changes', row_to_json(NEW) :: text);
+
 RETURN NEW;
+
 END;
-$$ LANGUAGE plpgsql;
+
+$ $ LANGUAGE plpgsql;
 
 CREATE TRIGGER product_changes_trigger
 AFTER

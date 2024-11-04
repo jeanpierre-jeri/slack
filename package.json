@@ -11,10 +11,12 @@
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
 		"test:unit": "vitest",
-		"test": "npm run test:unit -- --run"
+		"test": "npm run test:unit -- --run",
+		"test:e2e": "playwright test"
 	},
 	"devDependencies": {
 		"@fontsource-variable/inconsolata": "5.1.0",
+		"@playwright/test": "^1.48.2",
 		"@sveltejs/adapter-vercel": "5.4.6",
 		"@sveltejs/kit": "2.7.4",
 		"@sveltejs/vite-plugin-svelte": "4.0.0",
@@ -22,6 +24,7 @@
 		"@tailwindcss/typography": "0.5.15",
 		"@types/deno": "2.0.0",
 		"@types/eslint": "9.6.1",
+		"@types/node": "^22.8.7",
 		"@types/pg": "8.11.10",
 		"autoprefixer": "10.4.20",
 		"eslint": "9.14.0",
