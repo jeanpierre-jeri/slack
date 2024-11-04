@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '@/app.css'
+	import CreateWorkspaceModal from '@/features/workspaces/api/components/create-workspace-modal.svelte'
 	let { children, data } = $props()
 </script>
 
@@ -7,3 +8,4 @@
 	<title>Slack</title>
 </svelte:head>
 {@render children()}
+<CreateWorkspaceModal />

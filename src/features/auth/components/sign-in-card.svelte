@@ -11,7 +11,7 @@
 	} from '@/lib/components/ui/card'
 	import Input from '@/lib/components/ui/input/input.svelte'
 	import Separator from '@/lib/components/ui/separator/separator.svelte'
-	import type { SignInFlow } from './types'
+	import type { SignInFlow } from '../types'
 	import { signIn } from '@auth/sveltekit/client'
 
 	interface Props {

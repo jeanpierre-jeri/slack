@@ -1,6 +1,5 @@
 <script lang="ts">
 	import SignInCard from './sign-in-card.svelte'
-	import type { SignInFlow } from './types'
 </script>
 
 <div class="flex h-dvh grow flex-col items-center justify-center bg-[#5C3B58]">
