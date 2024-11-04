@@ -2,8 +2,8 @@
 	import '@fontsource-variable/inconsolata'
 	import '@/app.css'
 	import Header from '@/components/header.svelte'
-	let { children } = $props()
+	let { children, data } = $props()
 </script>
 
-<Header />
+<Header session={data.session} />
 {@render children()}
