@@ -2,11 +2,13 @@
 	import GithubIcon from '@/lib/components/icons/github-icon.svelte'
 	import GoogleIcon from '@/lib/components/icons/google-icon.svelte'
 	import Button from '@/lib/components/ui/button/button.svelte'
-	import CardContent from '@/lib/components/ui/card/card-content.svelte'
-	import CardDescription from '@/lib/components/ui/card/card-description.svelte'
-	import CardHeader from '@/lib/components/ui/card/card-header.svelte'
-	import CardTitle from '@/lib/components/ui/card/card-title.svelte'
-	import Card from '@/lib/components/ui/card/card.svelte'
+	import {
+		Card,
+		CardContent,
+		CardDescription,
+		CardHeader,
+		CardTitle,
+	} from '@/lib/components/ui/card'
 	import Input from '@/lib/components/ui/input/input.svelte'
 	import Separator from '@/lib/components/ui/separator/separator.svelte'
 	import type { SignInFlow } from './types'

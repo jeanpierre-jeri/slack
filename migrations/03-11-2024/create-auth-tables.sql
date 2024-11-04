@@ -1,3 +1,26 @@
+CREATE OR REPLACE FUNCTION generate_random_animal_name() RETURNS TEXT AS $$
+DECLARE
+  animals TEXT[] := ARRAY[
+    'Lion', 'Tiger', 'Bear', 'Wolf', 'Fox', 'Eagle', 'Hawk', 'Panther', 'Falcon', 'Shark',
+    'Jaguar', 'Cobra', 'Leopard', 'Raven', 'Buffalo', 'Viper', 'Otter', 'Raccoon', 'Moose', 'Stallion',
+    'Cheetah', 'Puma', 'Falcon', 'Gazelle', 'Heron', 'Bison', 'Ibis', 'Mustang', 'Phoenix', 'Griffin',
+    'Dragon', 'Orca', 'Python', 'Cougar', 'Rhino', 'Beaver', 'Salmon', 'Lynx', 'Condor', 'Mamba',
+    'Osprey', 'Pelican', 'Jackal', 'Scorpion', 'Crane', 'Falcon', 'Kestrel', 'Dingo', 'Gorilla', 'Hyena'
+  ];
+  first_animal TEXT;
+  second_animal TEXT;
+BEGIN
+  first_animal := animals[(random() * array_length(animals, 1) + 1)::int];
+  second_animal := animals[(random() * array_length(animals, 1) + 1)::int];
+  
+  WHILE first_animal = second_animal LOOP
+    second_animal := animals[(random() * array_length(animals, 1) + 1)::int];
+  END LOOP;
+  
+  RETURN first_animal || ' ' || second_animal;
+END;
+$$ LANGUAGE plpgsql;
+
 DROP TABLE IF EXISTS public.sessions;
 
 DROP TABLE IF EXISTS public.accounts;
@@ -9,7 +32,7 @@ DROP TABLE IF EXISTS public.users;
 CREATE TABLE public.users (
   id BIGSERIAL,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  name TEXT,
+  name TEXT DEFAULT generate_random_animal_name(),
   email TEXT,
   "emailVerified" TIMESTAMPTZ,
   image TEXT,

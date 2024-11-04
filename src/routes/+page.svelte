@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Button from '@/lib/components/ui/button/button.svelte'
-	import { signOut } from '@auth/sveltekit/client'
+	import UserButton from '@/features/auth/components/user-button.svelte'
 
 	const { data } = $props()
+	const { session } = data
 </script>
 
 <svelte:head>
@@ -10,7 +10,5 @@
 </svelte:head>
 
 <div>
-	Logged in
-
-	<Button onclick={() => signOut({ callbackUrl: '/auth' })}>Sign out</Button>
+	<UserButton {session} />
 </div>
