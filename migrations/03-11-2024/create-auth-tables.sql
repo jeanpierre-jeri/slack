@@ -54,7 +54,7 @@ ALTER TABLE
 
 CREATE TABLE public.accounts (
   id BIGSERIAL,
-  "userId" BIGINT NOT NULL REFERENCES public.users(id),
+  "userId" BIGINT NOT NULL REFERENCES public.users(id) ON DELETE CASCADE,
   type TEXT NOT NULL,
   provider TEXT NOT NULL,
   "providerAccountId" TEXT NOT NULL,
@@ -73,7 +73,7 @@ ALTER TABLE
 
 CREATE TABLE public.sessions (
   id BIGSERIAL,
-  "userId" BIGINT NOT NULL REFERENCES public.users(id),
+  "userId" BIGINT NOT NULL REFERENCES public.users(id) ON DELETE CASCADE,
   expires TIMESTAMPTZ NOT NULL,
   "sessionToken" TEXT NOT NULL,
   PRIMARY KEY (id)
