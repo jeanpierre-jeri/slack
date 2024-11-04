@@ -16,7 +16,25 @@
 		setState: (state: SignInFlow) => void
 	}
 
-	let { setState }: Props = $props()
+	let pending = $state(false)
+
+	const handleOauth = async (provider: 'github' | 'google') => {
+		pending = true
+		await signIn(provider, { callbackUrl: '/' })
+	}
+
+	const handleSignIn = async (
+		e: SubmitEvent & {
+			currentTarget: EventTarget & HTMLFormElement
+		},
+	) => {
+		pending = true
+		e.preventDefault()
+		const form = e.currentTarget
+		const data = new FormData(form)
+		const email = data.get('email')
+		await signIn('nodemailer', { email, callbackUrl: '/' })
+	}
 </script>
 
 <Card class="h-full w-full p-8">
@@ -25,20 +43,18 @@
 		<CardDescription>Use your email or another service to continue</CardDescription>
 	</CardHeader>
 	<CardContent class="space-y-5 px-0 pb-0">
-		<form class="space-y-2.5">
-			<Input name="email" disabled={false} placeholder="Email" type="email" required />
+		<form class="space-y-2.5" onsubmit={handleSignIn}>
+			<Input name="email" disabled={pending} placeholder="Email" type="email" required />
 
-			<Input name="password" disabled={false} placeholder="Password" type="password" required />
-
-			<Button type="submit" class="w-full" size="lg" disabled={false}>Continue</Button>
+			<Button type="submit" class="w-full" size="lg" disabled={pending}>Continue</Button>
 		</form>
 
 		<Separator />
 
 		<div class="flex flex-col gap-y-2.5">
 			<Button
-				disabled={false}
-				onclick={() => signIn('google', { callbackUrl: '/' })}
+				disabled={pending}
+				onclick={() => handleOauth('google')}
 				variant="outline"
 				class="grid w-full grid-cols-[auto_1fr]"
 			>
@@ -47,8 +63,8 @@
 			</Button>
 
 			<Button
-				disabled={false}
-				onclick={() => signIn('github', { callbackUrl: '/' })}
+				disabled={pending}
+				onclick={() => handleOauth('github')}
 				variant="outline"
 				class="grid w-full grid-cols-[auto_1fr]"
 			>
@@ -56,15 +72,5 @@
 				Continue with Github
 			</Button>
 		</div>
-
-		<p class="text-xs text-muted-foreground">
-			Don't have an account?
-			<button
-				class="cursor-pointer text-sky-700 hover:underline"
-				onclick={() => setState('signUp')}
-			>
-				Sign up
-			</button>
-		</p>
 	</CardContent>
 </Card>
