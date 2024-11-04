@@ -1,14 +1,3 @@
-export const workspaceModal = createWorkspaceModalStore(false)
+import { ref } from '@/lib/utils.svelte'
 
-function createWorkspaceModalStore(initial: boolean) {
-	let open = $state(initial)
-
-	return {
-		get open() {
-			return open
-		},
-		set open(state: boolean) {
-			open = state
-		},
-	}
-}
+export const workspaceModal = ref(false)

@@ -9,7 +9,7 @@
 	import { workspaceModal } from '@/features/workspaces/store/use-create-workspace-modal.svelte'
 </script>
 
-<Dialog open={workspaceModal.open} onOpenChange={(state) => (workspaceModal.open = state)}>
+<Dialog open={workspaceModal.value} onOpenChange={(state) => (workspaceModal.value = state)}>
 	<DialogContent>
 		<DialogHeader>
 			<DialogTitle>Add a workspace</DialogTitle>

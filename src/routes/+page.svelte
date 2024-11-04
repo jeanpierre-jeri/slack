@@ -6,8 +6,8 @@
 	const { session, workspaces } = data
 
 	$effect(() => {
-		if (workspaces.length === 0 && !workspaceModal.open) {
-			workspaceModal.open = true
+		if (workspaces.length === 0 && !workspaceModal.value) {
+			workspaceModal.value = true
 		}
 	})
 </script>
