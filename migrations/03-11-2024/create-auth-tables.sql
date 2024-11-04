@@ -58,12 +58,3 @@ CREATE TABLE public.users (
 
 ALTER TABLE
   public.users ENABLE ROW LEVEL SECURITY;
-
-CREATE TABLE public.customers (
-  id BIGINT REFERENCES public.users NOT NULL,
-  stripe_customer_id text,
-  PRIMARY KEY(id)
-);
-
-ALTER TABLE
-  public.customers ENABLE ROW LEVEL SECURITY;

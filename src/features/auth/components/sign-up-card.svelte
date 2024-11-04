@@ -46,7 +46,7 @@
 		<div class="flex flex-col gap-y-2.5">
 			<Button
 				disabled={false}
-				onclick={() => {}}
+				onclick={() => signIn('google', { callbackUrl: '/' })}
 				variant="outline"
 				class="grid w-full grid-cols-[auto_1fr]"
 			>
