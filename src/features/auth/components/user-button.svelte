@@ -30,7 +30,10 @@
 			</Avatar>
 		</DropdownMenuTrigger>
 		<DropdownMenuContent align="center" class="w-60" side="right">
-			<DropdownMenuItem onclick={() => signOut({ callbackUrl: '/auth' })} class="h-10">
+			<DropdownMenuItem
+				onclick={() => signOut({ callbackUrl: '/auth' })}
+				class="h-10 cursor-pointer"
+			>
 				<LogOut class="mr-2 size-4" />
 				Log out
 			</DropdownMenuItem>
