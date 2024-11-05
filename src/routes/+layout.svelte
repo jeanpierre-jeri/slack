@@ -1,11 +1,13 @@
 <script lang="ts">
 	import '@/app.css'
-	import CreateWorkspaceModal from '@/features/workspaces/api/components/create-workspace-modal.svelte'
-	let { children, data } = $props()
+	import Modals from '@/lib/components/modals.svelte'
+	import { Toaster } from '@/lib/components/ui/sonner'
+	let { children } = $props()
 </script>
 
 <svelte:head>
 	<title>Slack</title>
 </svelte:head>
 {@render children()}
-<CreateWorkspaceModal />
+<Toaster />
+<Modals />

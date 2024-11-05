@@ -24,20 +24,20 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
 	],
 	trustHost: true,
 
-	// callbacks: {
-	// 	session: async ({ session, user }) => {
-	// 		const { id, name, image, email } = user
-	// 		const { expires } = session
+	callbacks: {
+		session: async ({ session, user }) => {
+			const { id, name, image, email } = user
+			const { expires } = session
 
-	// 		return {
-	// 			user: {
-	// 				id,
-	// 				name,
-	// 				image,
-	// 				email,
-	// 			},
-	// 			expires,
-	// 		}
-	// 	},
-	// },
+			return {
+				user: {
+					id,
+					name,
+					image,
+					email,
+				},
+				expires,
+			}
+		},
+	},
 })

@@ -12,6 +12,10 @@ export const load: PageServerLoad = async (event) => {
 
 	const workspaces = await getWorkspaces({ userId: Number(session.user.id ?? '') })
 
+	if (workspaces.length) {
+		throw redirect(303, `/workspaces/${workspaces[0].id}`)
+	}
+
 	return {
 		workspaces,
 	}
