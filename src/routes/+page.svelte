@@ -4,7 +4,7 @@
 	import { workspaces } from '@/features/workspaces/store/workspaces-store.svelte.js'
 
 	const { data } = $props()
-	const { session, workspaces: initialWorkspaces } = data
+	const { workspaces: initialWorkspaces } = data
 
 	workspaces.value = initialWorkspaces
 
@@ -20,5 +20,5 @@
 </svelte:head>
 
 <div>
-	<UserButton {session} />
+	<UserButton />
 </div>

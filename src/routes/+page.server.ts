@@ -1,4 +1,4 @@
-import { getWorkspaces } from '@/features/workspaces/api/use-get-workspaces'
+import { getWorkspaces } from '@/services/db/workspaces'
 import type { PageServerLoad } from './$types'
 import { redirect } from '@sveltejs/kit'
 

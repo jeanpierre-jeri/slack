@@ -10,23 +10,22 @@
 
 	import { LogOut, Loader } from 'lucide-svelte'
 
-	import type { Session } from '@auth/sveltekit'
 	import { signOut } from '@auth/sveltekit/client'
+	import { getContext } from 'svelte'
+	import type { Session } from '@auth/sveltekit'
 
-	interface Props {
-		session: Session | null
-	}
-
-	const { session }: Props = $props()
+	const session = getContext<Session | null>('session')
 
 	const avatarFallback = session?.user?.email?.charAt(0).toUpperCase() || 'A'
+
+	const { name = '', image = '' } = session?.user || {}
 </script>
 
 {#if session?.user}
 	<DropdownMenu>
 		<DropdownMenuTrigger class="relative outline-none">
 			<Avatar class="size-10 transition hover:opacity-75">
-				<AvatarImage alt={session.user.name} src={session.user.image} />
+				<AvatarImage alt={name} src={image} />
 				<AvatarFallback class="bg-sky-500 text-white">{avatarFallback}</AvatarFallback>
 			</Avatar>
 		</DropdownMenuTrigger>
