@@ -43,7 +43,7 @@
 				}}
 			>
 				<div
-					class="relative mr-2 flex size-9 items-center justify-center overflow-hidden rounded-md bg-[#616061] text-lg font-semibold text-white"
+					class="relative mr-2 flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-md bg-[#616061] text-lg font-semibold text-white"
 				>
 					{name.charAt(0).toUpperCase()}
 				</div>
@@ -60,7 +60,7 @@
 			}}
 		>
 			<div
-				class="relative mr-2 flex size-9 items-center justify-center overflow-hidden rounded-md bg-[#f2f2f2] text-lg font-semibold text-slate-800"
+				class="relative mr-2 flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-md bg-[#f2f2f2] text-lg font-semibold text-slate-800"
 			>
 				<Plus />
 			</div>
