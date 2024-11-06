@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { workspace } from '@/stores/workspace.svelte'
+	import { workspaceStore } from '@/stores/workspace.svelte'
 	import Sidebar from './components/sidebar.svelte'
 	import Toolbar from './components/toolbar.svelte'
-	import { workspaces } from '@/stores/workspaces.svelte'
+	import { workspacesStore } from '@/stores/workspaces.svelte'
 
 	let { children, data } = $props()
 
 	$effect.pre(() => {
-		workspace.value = data.workspace
-		workspaces.value = data.workspaces
+		workspaceStore.value = data.workspace
+		workspacesStore.value = data.workspaces
 	})
 </script>
 

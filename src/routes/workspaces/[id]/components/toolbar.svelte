@@ -2,7 +2,7 @@
 	import { Button } from '@/lib/components/ui/button'
 	import { Info, Search } from 'lucide-svelte'
 
-	import { workspace as workspaceStore } from '@/stores/workspace.svelte'
+	import { workspaceStore } from '@/stores/workspace.svelte'
 
 	const workspace = $derived(workspaceStore.value)
 </script>

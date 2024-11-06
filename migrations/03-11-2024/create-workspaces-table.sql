@@ -11,3 +11,5 @@ CREATE TABLE workspaces (
 
 ALTER TABLE
   public.workspaces ENABLE ROW LEVEL SECURITY;
+
+CREATE INDEX workspaces_idx_user_id ON public.workspaces("userId");

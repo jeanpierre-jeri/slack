@@ -2,7 +2,6 @@
 	import '@/app.css'
 	import Modals from '@/lib/components/modals.svelte'
 	import { Toaster } from '@/lib/components/ui/sonner'
-	import type { Session } from '@auth/sveltekit'
 	import { setContext } from 'svelte'
 	let { children, data } = $props()
 

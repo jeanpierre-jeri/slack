@@ -9,20 +9,18 @@
 	import { workspaceModal } from '@/features/workspaces/store/use-create-workspace-modal.svelte'
 	import { goto } from '$app/navigation'
 	import { Plus } from 'lucide-svelte'
-	import { workspace as workspaceStore } from '@/stores/workspace.svelte'
-	import { workspaces as workspacesStore } from '@/stores/workspaces.svelte'
+	import { workspaceStore } from '@/stores/workspace.svelte'
+	import { workspacesStore } from '@/stores/workspaces.svelte'
 
 	const workspace = $derived(workspaceStore.value)
 	const workspaces = $derived(workspacesStore.value)
 </script>
 
 <DropdownMenu>
-	<DropdownMenuTrigger>
-		<Button
-			class="relative size-9 overflow-hidden bg-[#ababad] text-xl font-semibold text-slate-800 hover:bg-[#ababad]/80"
-		>
-			{workspace.name.charAt(0).toUpperCase()}
-		</Button>
+	<DropdownMenuTrigger
+		class="relative size-9 overflow-hidden rounded-md bg-[#ababad] text-xl font-semibold text-slate-800 hover:bg-[#ababad]/80"
+	>
+		{workspace.name.charAt(0).toUpperCase()}
 	</DropdownMenuTrigger>
 	<DropdownMenuContent side="bottom" align="start" class="w-64">
 		<DropdownMenuItem
