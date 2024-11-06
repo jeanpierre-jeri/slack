@@ -11,6 +11,8 @@
 	import { workspaceStore } from '@/features/workspaces/store/workspace.svelte'
 	import { ChevronDown } from 'lucide-svelte'
 	import { memberStore } from '@/features/members/store/member.svelte'
+	import { SquarePen, ListFilter } from 'lucide-svelte'
+	import Hint from '@/lib/components/hint.svelte'
 
 	const workspace = $derived(workspaceStore.value)
 	const member = $derived(memberStore.value)
@@ -58,4 +60,18 @@
 			{/if}
 		</DropdownMenuContent>
 	</DropdownMenu>
+
+	<div class="flex items-center gap-0.5">
+		<Hint label="Filter conversations" side="bottom">
+			<Button variant="transparent" size="iconSm">
+				<ListFilter class="size-4" />
+			</Button>
+		</Hint>
+
+		<Hint label="New message" side="bottom">
+			<Button variant="transparent" size="iconSm">
+				<SquarePen class="size-4" />
+			</Button>
+		</Hint>
+	</div>
 </div>
