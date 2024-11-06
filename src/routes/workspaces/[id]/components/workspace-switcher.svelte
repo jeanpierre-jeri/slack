@@ -9,8 +9,8 @@
 	import { workspaceModal } from '@/features/workspaces/store/use-create-workspace-modal.svelte'
 	import { goto } from '$app/navigation'
 	import { Plus } from 'lucide-svelte'
-	import { workspaceStore } from '@/stores/workspace.svelte'
-	import { workspacesStore } from '@/stores/workspaces.svelte'
+	import { workspaceStore } from '@/features/workspaces/store/workspace.svelte'
+	import { workspacesStore } from '@/features/workspaces/store/workspaces.svelte'
 
 	const workspace = $derived(workspaceStore.value)
 	const workspaces = $derived(workspacesStore.value)

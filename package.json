@@ -31,6 +31,7 @@
 		"globals": "15.11.0",
 		"lucide-svelte": "^0.454.0",
 		"mode-watcher": "^0.4.1",
+		"paneforge": "^0.0.6",
 		"prettier": "3.3.3",
 		"prettier-plugin-svelte": "3.2.7",
 		"prettier-plugin-tailwindcss": "0.6.8",

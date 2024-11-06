@@ -1,0 +1,1 @@
+<div>Workspace Sidebar</div>

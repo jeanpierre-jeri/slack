@@ -45,7 +45,7 @@ export async function POST({ request, locals }) {
 			values: [userId, rows[0].id, 'admin'],
 		})
 
-		return json({ workspaceId: rows[0].id }, { status: 200 })
+		return json({ workspaceId: rows[0].id, joinCode }, { status: 200 })
 	} catch (error) {
 		console.log('Error creating workspace', error)
 		return json({ message: 'Error creating workspace' }, { status: 500 })
