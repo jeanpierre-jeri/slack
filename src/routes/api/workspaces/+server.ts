@@ -1,3 +1,4 @@
+import { generateCode } from '@/lib/utils.js'
 import { json } from '@sveltejs/kit'
 import { z } from 'zod'
 
@@ -23,18 +24,25 @@ export async function POST({ request, locals }) {
 		const { auth, client } = locals
 		const session = await auth()
 
-		if (!session?.user?.id) {
+		const userId = session?.user?.id
+
+		if (!userId) {
 			return json({ message: 'Unauthorized' }, { status: 401 })
 		}
 
 		//TODO: Create proper method later
-		const joinCode = '123456'
+		const joinCode = generateCode()
 
 		const { name } = parsed.data
 
 		const { rows } = await client.query({
 			text: 'INSERT INTO workspaces (name, "userId", "joinCode") VALUES ($1, $2, $3) RETURNING id',
-			values: [name, session.user.id, joinCode],
+			values: [name, userId, joinCode],
+		})
+
+		await client.query({
+			text: 'INSERT INTO members ("userId", "workspaceId", "role") VALUES ($1, $2, $3)',
+			values: [userId, rows[0].id, 'admin'],
 		})
 
 		return json({ workspaceId: rows[0].id }, { status: 200 })

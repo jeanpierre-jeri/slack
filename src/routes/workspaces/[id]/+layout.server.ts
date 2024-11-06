@@ -10,12 +10,12 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
 		throw redirect(307, '/auth')
 	}
 
-	const workspaces = await getWorkspaces({ userId: Number(session.user.id ?? '') })
+	const workspaces = await getWorkspaces({ userId: session.user.id })
 
 	const workspace = workspaces.find((w) => w.id === params.id)
 
 	if (!workspace) {
-		throw redirect(307, '/workspaces')
+		throw redirect(307, '/')
 	}
 
 	return {

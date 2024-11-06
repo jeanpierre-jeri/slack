@@ -54,3 +54,13 @@ export const flyAndScale = (
 		easing: cubicOut,
 	}
 }
+
+export function generateCode() {
+	const str = '1234567890qwertyuipasdfghjklzxcvbnm'
+
+	const code = Array.from({ length: 6 }, () => {
+		return str[Math.floor(Math.random() * str.length)]
+	})
+
+	return code.join('')
+}

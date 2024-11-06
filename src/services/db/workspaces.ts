@@ -6,11 +6,18 @@ export interface Workspace {
 	joinCode: string
 }
 
-export async function getWorkspaces({ userId }: { userId: number }) {
+export async function getWorkspaces({ userId }: { userId: string }) {
 	try {
 		const client = await pool.connect()
 		const { rows } = await client.query<Workspace>({
-			text: `SELECT id, name, "joinCode" FROM workspaces WHERE "userId" = $1`,
+			text: `
+				SELECT 
+					w.id, 
+					w.name, 
+					w."joinCode" 
+				FROM members m
+				JOIN workspaces w ON m."workspaceId" = w.id
+				WHERE m."userId" = $1`,
 			values: [userId],
 		})
 
@@ -22,12 +29,12 @@ export async function getWorkspaces({ userId }: { userId: number }) {
 	}
 }
 
-export async function getWorkspaceById({ id, userId }: { id: string; userId: string }) {
+export async function getWorkspaceById({ id }: { id: string }) {
 	try {
 		const client = await pool.connect()
 		const { rows } = await client.query<Workspace>({
-			text: `SELECT id, name, "joinCode" FROM workspaces WHERE id = $1 AND "userId" = $2`,
-			values: [id, userId],
+			text: `SELECT id, name, "joinCode" FROM workspaces WHERE id = $1`,
+			values: [id],
 		})
 
 		client.release()
