@@ -1,7 +1,7 @@
 import { pool } from '@/db'
 
 export interface Member {
-	id: string
+	userId: string
 	role: string
 	workspaceId: string
 }
@@ -16,7 +16,7 @@ export async function getMemberByWorkspaceIdAndUserId({
 	try {
 		const client = await pool.connect()
 		const query = {
-			text: 'SELECT id, role, "workspaceId" FROM members WHERE "workspaceId" = $1 AND "userId" = $2',
+			text: 'SELECT "userId", role, "workspaceId" FROM members WHERE "workspaceId" = $1 AND "userId" = $2',
 			values: [workspaceId, userId],
 		}
 
@@ -34,7 +34,7 @@ export async function getMembersByWorkspaceId({ workspaceId }: { workspaceId: st
 	try {
 		const client = await pool.connect()
 		const query = {
-			text: 'SELECT id, role, "workspaceId" FROM members WHERE "workspaceId" = $1',
+			text: 'SELECT "userId", role, "workspaceId" FROM members WHERE "workspaceId" = $1',
 			values: [workspaceId],
 		}
 

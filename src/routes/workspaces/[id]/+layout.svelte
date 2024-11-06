@@ -5,12 +5,14 @@
 	import { ResizablePane, ResizablePaneGroup, ResizableHandle } from '@/lib/components/ui/resizable'
 	import WorkspaceSidebar from './components/workspace-sidebar.svelte'
 	import { workspacesStore } from '@/features/workspaces/store/workspaces.svelte'
+	import { memberStore } from '@/features/members/store/member.svelte'
 
 	let { children, data } = $props()
 
 	$effect.pre(() => {
 		workspaceStore.value = data.workspace
 		workspacesStore.value = data.workspaces
+		memberStore.value = data.member
 	})
 </script>
 
