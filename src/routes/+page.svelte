@@ -1,15 +1,15 @@
 <script lang="ts">
 	import UserButton from '@/features/auth/components/user-button.svelte'
 	import { workspaceModal } from '@/features/workspaces/store/use-create-workspace-modal.svelte.js'
-	import { workspaces } from '@/features/workspaces/store/workspaces-store.svelte.js'
+	import { workspacesStore } from '@/features/workspaces/store/workspaces.svelte.js'
 
 	const { data } = $props()
 	const { workspaces: initialWorkspaces } = data
 
-	workspaces.value = initialWorkspaces
+	workspacesStore.value = initialWorkspaces
 
 	$effect(() => {
-		if (workspaces.value.length === 0 && !workspaceModal.value) {
+		if (workspacesStore.value.length === 0 && !workspaceModal.value) {
 			workspaceModal.value = true
 		}
 	})
