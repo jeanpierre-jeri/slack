@@ -13,12 +13,25 @@
 	import { memberStore } from '@/features/members/store/member.svelte'
 	import { SquarePen, ListFilter } from 'lucide-svelte'
 	import Hint from '@/lib/components/hint.svelte'
+	import PreferencesModal from './preferences-modal.svelte'
 
 	const workspace = $derived(workspaceStore.value)
 	const member = $derived(memberStore.value)
 
 	const isAdmin = $derived(memberStore.value.role === 'admin')
+
+	let preferencesOpen = $state(false)
+
+	const setPreferencesOpen = (value: boolean) => {
+		preferencesOpen = value
+	}
 </script>
+
+<PreferencesModal
+	open={preferencesOpen}
+	setOpen={setPreferencesOpen}
+	initialValue={workspace.name}
+/>
 
 <div class="flex h-[49px] items-center justify-between gap-0.5 px-4">
 	<DropdownMenu>
@@ -54,7 +67,12 @@
 
 				<DropdownMenuSeparator />
 
-				<DropdownMenuItem class="cursor-pointer py-2" onclick={() => {}}>
+				<DropdownMenuItem
+					class="cursor-pointer py-2"
+					onclick={() => {
+						setPreferencesOpen(true)
+					}}
+				>
 					Preferences
 				</DropdownMenuItem>
 			{/if}
