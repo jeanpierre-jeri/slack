@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { invalidateAll } from '$app/navigation'
 	import { page } from '$app/stores'
+	import ConfirmModal from '@/lib/components/confirm-modal.svelte'
 	import { Button } from '@/lib/components/ui/button'
 	import {
 		Dialog,
@@ -24,6 +25,8 @@
 	let isEditOpen = $state(false)
 	let isUpdatingWorkspace = $state(false)
 	let isDeletingWorkspace = $state(false)
+
+	let confirmModalComponent: ReturnType<typeof ConfirmModal>
 
 	const handleSubmit = async (e: Event & { currentTarget: HTMLFormElement }) => {
 		try {
@@ -64,9 +67,9 @@
 
 	const handleRemove = async () => {
 		try {
-			const confirmation = window.confirm('Are you sure you want to delete this workspace?')
+			const ok = await confirmModalComponent.confirm()
 
-			if (!confirmation) return
+			if (!ok) return
 
 			isDeletingWorkspace = true
 			const res = await fetch(`/api/workspaces/${$page.params.id}`, {
@@ -163,3 +166,9 @@
 		</div>
 	</DialogContent>
 </Dialog>
+
+<ConfirmModal
+	title="Are you sure?"
+	message="This action is irreversible."
+	bind:this={confirmModalComponent}
+/>
