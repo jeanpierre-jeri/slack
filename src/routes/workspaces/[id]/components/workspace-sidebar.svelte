@@ -6,6 +6,7 @@
 	import WorkspaceSection from './workspace-section.svelte'
 	import { membersStore } from '@/features/members/store/members.svelte'
 	import UserItem from './user-item.svelte'
+	import { channelModal } from '@/features/channels/store/use-create-workspace-channel.svelte'
 
 	const channels = $derived(channelsStore.value)
 	const members = $derived(membersStore.value)
@@ -36,7 +37,13 @@
 		{/each}
 	</WorkspaceSection>
 
-	<WorkspaceSection label="Direct Messages" hint="New direct message" onNew={() => {}}>
+	<WorkspaceSection
+		label="Direct Messages"
+		hint="New direct message"
+		onNew={() => {
+			channelModal.value = true
+		}}
+	>
 		{#each members as { user } (user.id)}
 			<UserItem id={user.id} label={user.name ?? undefined} image={user.image ?? undefined} />
 		{/each}
