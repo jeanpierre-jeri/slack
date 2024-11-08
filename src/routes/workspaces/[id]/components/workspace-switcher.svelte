@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Button } from '@/lib/components/ui/button'
 	import {
 		DropdownMenu,
 		DropdownMenuTrigger,
@@ -9,11 +8,10 @@
 	import { workspaceModal } from '@/features/workspaces/store/use-create-workspace-modal.svelte'
 	import { goto } from '$app/navigation'
 	import { Plus } from 'lucide-svelte'
-	import { workspaceStore } from '@/features/workspaces/store/workspace.svelte'
-	import { workspacesStore } from '@/features/workspaces/store/workspaces.svelte'
+	import { page } from '$app/stores'
 
-	const workspace = $derived(workspaceStore.value)
-	const workspaces = $derived(workspacesStore.value)
+	const workspace = $derived($page.data.workspace)
+	const workspaces = $derived($page.data.workspaces)
 </script>
 
 <DropdownMenu>

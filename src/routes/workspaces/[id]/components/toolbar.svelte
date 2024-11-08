@@ -2,9 +2,9 @@
 	import { Button } from '@/lib/components/ui/button'
 	import { Info, Search } from 'lucide-svelte'
 
-	import { workspaceStore } from '@/features/workspaces/store/workspace.svelte'
+	import { page } from '$app/stores'
 
-	const workspace = $derived(workspaceStore.value)
+	const workspace = $derived($page.data.workspace)
 </script>
 
 <nav class="flex h-10 items-center justify-between bg-[#481349] p-1.5">

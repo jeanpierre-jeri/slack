@@ -1,21 +1,10 @@
 <script lang="ts">
-	import { workspaceStore } from '@/features/workspaces/store/workspace.svelte'
 	import Sidebar from './components/sidebar.svelte'
 	import Toolbar from './components/toolbar.svelte'
 	import { ResizablePane, ResizablePaneGroup, ResizableHandle } from '@/lib/components/ui/resizable'
 	import WorkspaceSidebar from './components/workspace-sidebar.svelte'
-	import { workspacesStore } from '@/features/workspaces/store/workspaces.svelte'
-	import { memberStore } from '@/features/members/store/member.svelte'
-	import { membersStore } from '@/features/members/store/members.svelte'
 
-	let { children, data } = $props()
-
-	$effect.pre(() => {
-		workspaceStore.value = data.workspace
-		workspacesStore.value = data.workspaces
-		memberStore.value = data.member
-		membersStore.value = data.members
-	})
+	let { children } = $props()
 </script>
 
 <div class="grid h-full grid-rows-[auto_1fr]">

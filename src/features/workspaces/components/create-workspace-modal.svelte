@@ -5,7 +5,6 @@
 	import { Button } from '@/lib/components/ui/button'
 	import { goto } from '$app/navigation'
 	import { toast } from 'svelte-sonner'
-	import { workspacesStore } from '../store/workspaces.svelte'
 
 	let isLoading = $state(false)
 
@@ -36,11 +35,10 @@
 				return
 			}
 
-			const { workspaceId, joinCode } = await res.json()
+			const { workspaceId } = await res.json()
 
 			toast.success('Workspace created')
 
-			workspacesStore.value.push({ id: workspaceId, name: String(name), joinCode })
 			workspaceModal.value = false
 			goto(`/workspaces/${workspaceId}`)
 		} catch (error) {

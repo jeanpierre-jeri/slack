@@ -6,11 +6,13 @@ export const load: PageServerLoad = async (event) => {
 	const { auth } = event.locals
 	const session = await auth()
 
-	if (!session?.user) {
+	const userId = session?.user?.id
+
+	if (!userId) {
 		throw redirect(303, '/auth')
 	}
 
-	const workspaces = await getWorkspaces({ userId: Number(session.user.id ?? '') })
+	const workspaces = await getWorkspaces({ userId })
 
 	if (workspaces.length) {
 		throw redirect(303, `/workspaces/${workspaces[0].id}`)

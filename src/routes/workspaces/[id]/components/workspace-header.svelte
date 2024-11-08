@@ -8,17 +8,16 @@
 		DropdownMenuTrigger,
 	} from '@/lib/components/ui/dropdown-menu'
 
-	import { workspaceStore } from '@/features/workspaces/store/workspace.svelte'
 	import { ChevronDown } from 'lucide-svelte'
-	import { memberStore } from '@/features/members/store/member.svelte'
 	import { SquarePen, ListFilter } from 'lucide-svelte'
 	import Hint from '@/lib/components/hint.svelte'
 	import PreferencesModal from './preferences-modal.svelte'
+	import { page } from '$app/stores'
 
-	const workspace = $derived(workspaceStore.value)
-	const member = $derived(memberStore.value)
+	const workspace = $derived($page.data.workspace)
+	const member = $derived($page.data.member)
 
-	const isAdmin = $derived(memberStore.value.role === 'admin')
+	const isAdmin = $derived(member.role === 'admin')
 
 	let preferencesOpen = $state(false)
 
