@@ -45,6 +45,11 @@ export async function POST({ request, locals }) {
 			values: [userId, rows[0].id, 'admin'],
 		})
 
+		await client.query({
+			text: 'INSERT INTO channels (workspace_id, name) VALUES ($1, $2)',
+			values: [rows[0].id, 'general'],
+		})
+
 		return json({ workspaceId: rows[0].id, joinCode }, { status: 200 })
 	} catch (error) {
 		console.log('Error creating workspace', error)

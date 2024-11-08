@@ -33,7 +33,7 @@
 			<span class="text-xs text-muted-foreground"> Active workspace </span>
 		</DropdownMenuItem>
 
-		{#each workspaces as { id, name }}
+		{#each workspaces as { id, name } (id)}
 			<DropdownMenuItem
 				class="cursor-pointer capitalize"
 				onclick={() => {

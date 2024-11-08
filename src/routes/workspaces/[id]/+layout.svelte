@@ -6,6 +6,7 @@
 	import WorkspaceSidebar from './components/workspace-sidebar.svelte'
 	import { workspacesStore } from '@/features/workspaces/store/workspaces.svelte'
 	import { memberStore } from '@/features/members/store/member.svelte'
+	import { channelsStore } from '@/features/channels/store/channels.svelte'
 
 	let { children, data } = $props()
 
@@ -13,6 +14,7 @@
 		workspaceStore.value = data.workspace
 		workspacesStore.value = data.workspaces
 		memberStore.value = data.member
+		channelsStore.value = data.channels
 	})
 </script>
 

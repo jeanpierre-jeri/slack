@@ -2,6 +2,7 @@ import { getWorkspaces } from '@/services/db/workspaces'
 import type { LayoutServerLoad } from './$types'
 import { redirect } from '@sveltejs/kit'
 import { getMemberByWorkspaceIdAndUserId } from '@/services/db/members'
+import { getChannelsByWorkspaceIdAndUserId } from '@/services/db/channels'
 
 export const load: LayoutServerLoad = async ({ locals, params }) => {
 	const { auth } = locals
@@ -13,9 +14,10 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
 		throw redirect(307, '/auth')
 	}
 
-	const [workspaces, member] = await Promise.all([
+	const [workspaces, member, channels] = await Promise.all([
 		getWorkspaces({ userId }),
 		getMemberByWorkspaceIdAndUserId({ userId, workspaceId: params.id }),
+		getChannelsByWorkspaceIdAndUserId({ userId, workspaceId: params.id }),
 	])
 
 	const workspace = workspaces.find((w) => w.id === params.id)
@@ -28,5 +30,6 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
 		workspaces: workspaces.filter((w) => w.id !== params.id),
 		workspace,
 		member,
+		channels,
 	}
 }
