@@ -1,12 +1,17 @@
-import { generateCode } from '@/lib/utils.js'
 import { json } from '@sveltejs/kit'
 import { z } from 'zod'
 
 const schema = z.object({
-	name: z.string().min(3).max(80),
+	name: z
+		.string()
+		.min(3)
+		.max(80)
+		.transform((name) => {
+			return name.toLowerCase().replace(/\s+/g, '-').replace(/-+/g, '-')
+		}),
 })
 
-export async function POST({ request, locals }) {
+export async function POST({ request, locals, params }) {
 	try {
 		const body = await request.json()
 		const parsed = await schema.spa(body)
@@ -30,27 +35,29 @@ export async function POST({ request, locals }) {
 			return json({ message: 'Unauthorized' }, { status: 401 })
 		}
 
-		//TODO: Create proper method later
-		const joinCode = generateCode()
+		const { rows } = await client.query({
+			text: 'SELECT role FROM members WHERE "userId" = $1 AND "workspaceId" = $2',
+			values: [userId, params.id],
+		})
+
+		if (!rows.length || rows[0].role !== 'admin') {
+			return json({ message: 'Unauthorized' }, { status: 401 })
+		}
 
 		const { name } = parsed.data
 
-		const { rows } = await client.query({
-			text: 'INSERT INTO workspaces (name, "userId", "joinCode") VALUES ($1, $2, $3) RETURNING id',
-			values: [name, userId, joinCode],
+		const result = await client.query({
+			text: `
+        INSERT INTO channels (workspace_id, name) 
+        VALUES ($1, $2) 
+        RETURNING id
+      `,
+			values: [params.id, name],
 		})
 
-		await client.query({
-			text: 'INSERT INTO members ("userId", "workspaceId", "role") VALUES ($1, $2, $3)',
-			values: [userId, rows[0].id, 'admin'],
-		})
+		const channelId = result.rows[0].id
 
-		await client.query({
-			text: 'INSERT INTO channels (workspace_id, name) VALUES ($1, $2)',
-			values: [rows[0].id, 'general'],
-		})
-
-		return json({ workspaceId: rows[0].id, joinCode }, { status: 200 })
+		return json({ channelId }, { status: 200 })
 	} catch (error) {
 		console.log('Error creating workspace', error)
 		return json({ message: 'Error creating workspace' }, { status: 500 })

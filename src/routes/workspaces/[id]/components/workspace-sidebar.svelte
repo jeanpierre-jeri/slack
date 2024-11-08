@@ -7,9 +7,11 @@
 	import { membersStore } from '@/features/members/store/members.svelte'
 	import UserItem from './user-item.svelte'
 	import { channelModal } from '@/features/channels/store/use-create-workspace-channel.svelte'
+	import { memberStore } from '@/features/members/store/member.svelte'
 
 	const channels = $derived(channelsStore.value)
 	const members = $derived(membersStore.value)
+	const member = $derived(memberStore.value)
 </script>
 
 {#snippet threads({ className }: { className?: string })}
@@ -31,19 +33,21 @@
 		<SidebarItem label="Threads" icon={threads} id="threads" />
 		<SidebarItem label="Drafts & Sent" icon={drafts} id="drafts" />
 	</div>
-	<WorkspaceSection label="Channels" hint="New channel" onNew={() => {}}>
+	<WorkspaceSection
+		label="Channels"
+		hint="New channel"
+		onNew={member.role === 'admin'
+			? () => {
+					channelModal.value = true
+				}
+			: undefined}
+	>
 		{#each channels as { id, name } (id)}
 			<SidebarItem label={name} icon={hash} {id} />
 		{/each}
 	</WorkspaceSection>
 
-	<WorkspaceSection
-		label="Direct Messages"
-		hint="New direct message"
-		onNew={() => {
-			channelModal.value = true
-		}}
-	>
+	<WorkspaceSection label="Direct Messages" hint="New direct message" onNew={() => {}}>
 		{#each members as { user } (user.id)}
 			<UserItem id={user.id} label={user.name ?? undefined} image={user.image ?? undefined} />
 		{/each}
