@@ -24,9 +24,9 @@
 {#if session?.user}
 	<DropdownMenu>
 		<DropdownMenuTrigger class="relative outline-none">
-			<Avatar class="size-10 transition hover:opacity-75">
-				<AvatarImage alt={name} src={image} />
-				<AvatarFallback class="bg-sky-500 text-white">{avatarFallback}</AvatarFallback>
+			<Avatar class="size-10 rounded-md transition hover:opacity-75">
+				<AvatarImage alt={name} src={image} class="rounded-md" />
+				<AvatarFallback class="rounded-md bg-sky-500 text-white">{avatarFallback}</AvatarFallback>
 			</Avatar>
 		</DropdownMenuTrigger>
 		<DropdownMenuContent align="center" class="w-60" side="right">

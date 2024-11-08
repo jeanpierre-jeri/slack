@@ -4,8 +4,11 @@
 	import SidebarItem from './sidebar-item.svelte'
 	import { channelsStore } from '@/features/channels/store/channels.svelte'
 	import WorkspaceSection from './workspace-section.svelte'
+	import { membersStore } from '@/features/members/store/members.svelte'
+	import UserItem from './user-item.svelte'
 
 	const channels = $derived(channelsStore.value)
+	const members = $derived(membersStore.value)
 </script>
 
 {#snippet threads({ className }: { className?: string })}
@@ -30,6 +33,12 @@
 	<WorkspaceSection label="Channels" hint="New channel" onNew={() => {}}>
 		{#each channels as { id, name } (id)}
 			<SidebarItem label={name} icon={hash} {id} />
+		{/each}
+	</WorkspaceSection>
+
+	<WorkspaceSection label="Direct Messages" hint="New direct message" onNew={() => {}}>
+		{#each members as { user } (user.id)}
+			<UserItem id={user.id} label={user.name ?? undefined} image={user.image ?? undefined} />
 		{/each}
 	</WorkspaceSection>
 </div>

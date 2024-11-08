@@ -2,6 +2,11 @@ import { pool } from '@/db'
 
 export interface Member {
 	userId: string
+	user: {
+		id: string
+		name: string | null
+		image: string | null
+	}
 	role: string
 	workspaceId: string
 }
@@ -16,7 +21,21 @@ export async function getMemberByWorkspaceIdAndUserId({
 	try {
 		const client = await pool.connect()
 		const query = {
-			text: 'SELECT "userId", role, "workspaceId" FROM members WHERE "workspaceId" = $1 AND "userId" = $2',
+			text: `
+				SELECT 
+					m."userId", 
+					m.role, 
+					m."workspaceId",
+					JSON_BUILD_OBJECT(
+						'id', u.id,
+						'name', u.name,
+						'image', u.image
+					) AS user
+				FROM members m
+				JOIN users u ON u.id = m."userId" 
+				WHERE m."workspaceId" = $1 
+					AND m."userId" = $2
+			`,
 			values: [workspaceId, userId],
 		}
 
@@ -34,7 +53,20 @@ export async function getMembersByWorkspaceId({ workspaceId }: { workspaceId: st
 	try {
 		const client = await pool.connect()
 		const query = {
-			text: 'SELECT "userId", role, "workspaceId" FROM members WHERE "workspaceId" = $1',
+			text: `
+				SELECT 
+					"userId", 
+					role, 
+					"workspaceId",
+					JSON_BUILD_OBJECT(
+						'id', u.id,
+						'name', u.name,
+						'image', u.image
+					) AS user
+				FROM members m
+				JOIN users u ON u.id = m."userId"
+				WHERE m."workspaceId" = $1
+			`,
 			values: [workspaceId],
 		}
 

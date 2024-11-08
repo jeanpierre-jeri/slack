@@ -7,6 +7,7 @@
 	import { workspacesStore } from '@/features/workspaces/store/workspaces.svelte'
 	import { memberStore } from '@/features/members/store/member.svelte'
 	import { channelsStore } from '@/features/channels/store/channels.svelte'
+	import { membersStore } from '@/features/members/store/members.svelte'
 
 	let { children, data } = $props()
 
@@ -15,6 +16,7 @@
 		workspacesStore.value = data.workspaces
 		memberStore.value = data.member
 		channelsStore.value = data.channels
+		membersStore.value = data.members
 	})
 </script>
 
