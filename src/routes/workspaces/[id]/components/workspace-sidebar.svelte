@@ -2,14 +2,14 @@
 	import WorkspaceHeader from './workspace-header.svelte'
 	import { MessageSquareText, SendHorizontal, HashIcon } from 'lucide-svelte'
 	import SidebarItem from './sidebar-item.svelte'
-	import { channelsStore } from '@/features/channels/store/channels.svelte'
 	import WorkspaceSection from './workspace-section.svelte'
 	import { membersStore } from '@/features/members/store/members.svelte'
 	import UserItem from './user-item.svelte'
 	import { channelModal } from '@/features/channels/store/use-create-workspace-channel.svelte'
 	import { memberStore } from '@/features/members/store/member.svelte'
+	import { page } from '$app/stores'
 
-	const channels = $derived(channelsStore.value)
+	const channels = $derived($page.data.channels)
 	const members = $derived(membersStore.value)
 	const member = $derived(memberStore.value)
 </script>

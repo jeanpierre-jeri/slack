@@ -4,7 +4,6 @@
 	import { Input } from '@/lib/components/ui/input'
 	import { Button } from '@/lib/components/ui/button'
 	import { toast } from 'svelte-sonner'
-	import { channelsStore } from '../store/channels.svelte'
 	import { page } from '$app/stores'
 
 	let isLoading = $state(false)
@@ -40,7 +39,6 @@
 
 			toast.success('Channel created')
 
-			channelsStore.value.push({ id: channelId, name: String(name) })
 			channelModal.value = false
 		} catch (error) {
 			console.log('Error creating workspace', error)
