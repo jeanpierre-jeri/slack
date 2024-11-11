@@ -17,6 +17,7 @@
 	import { toast } from 'svelte-sonner'
 
 	const { name } = $derived($page.data.channel)
+	const member = $derived($page.data.member)
 
 	let editOpen = $state(false)
 	let isLoading = $state(false)
@@ -66,6 +67,11 @@
 
 	const deleteChannel = async () => {
 		try {
+			if (member.role !== 'admin') {
+				toast.error('You are not authorized to delete this channel')
+				return
+			}
+
 			const ok = await confirmModalComponent.confirm()
 
 			if (!ok) return
@@ -126,11 +132,13 @@
 						editOpen = state
 					}}
 				>
-					<DialogTrigger>
+					<DialogTrigger disabled={member.role !== 'admin'}>
 						<div class="cursor-pointer rounded-lg border bg-white px-5 py-4 hover:bg-gray-50">
 							<div class="flex items-center justify-between">
 								<p class="text-sm font-semibold">Channel name</p>
-								<p class="text-sm font-semibold text-[#1264a3] hover:underline">Edit</p>
+								{#if member.role === 'admin'}
+									<p class="text-sm font-semibold text-[#1264a3] hover:underline">Edit</p>
+								{/if}
 							</div>
 							<p class="text-left text-sm"># {name}</p>
 						</div>
@@ -186,7 +194,7 @@
 </div>
 
 <ConfirmModal
-	title="Delete channel"
-	message="Are you sure you want to delete this channel?"
+	title="Delete this channel?"
+	message="You are about to delete this channel. This action is irreversible."
 	bind:this={confirmModalComponent}
 />
