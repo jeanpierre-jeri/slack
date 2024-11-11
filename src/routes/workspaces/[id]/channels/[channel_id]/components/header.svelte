@@ -67,11 +67,6 @@
 
 	const deleteChannel = async () => {
 		try {
-			if (member.role !== 'admin') {
-				toast.error('You are not authorized to delete this channel')
-				return
-			}
-
 			const ok = await confirmModalComponent.confirm()
 
 			if (!ok) return
@@ -180,14 +175,16 @@
 					</DialogContent>
 				</Dialog>
 
-				<button
-					onclick={deleteChannel}
-					class="flex items-center gap-x-2 rounded-lg border bg-white px-5 py-4 text-rose-600 hover:bg-gray-50"
-					disabled={isLoading}
-				>
-					<TrashIcon class="size-4" />
-					<span class="text-sm font-semibold">Delete channel</span>
-				</button>
+				{#if member.role === 'admin'}
+					<button
+						onclick={deleteChannel}
+						class="flex items-center gap-x-2 rounded-lg border bg-white px-5 py-4 text-rose-600 hover:bg-gray-50"
+						disabled={isLoading}
+					>
+						<TrashIcon class="size-4" />
+						<span class="text-sm font-semibold">Delete channel</span>
+					</button>
+				{/if}
 			</div>
 		</DialogContent>
 	</Dialog>
