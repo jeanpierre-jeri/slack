@@ -66,11 +66,10 @@
 	}
 
 	const handleRemove = async () => {
+		const ok = await confirmModalComponent.confirm()
+
+		if (!ok) return
 		try {
-			const ok = await confirmModalComponent.confirm()
-
-			if (!ok) return
-
 			isDeletingWorkspace = true
 			const res = await fetch(`/api/workspaces/${$page.params.id}`, {
 				method: 'DELETE',

@@ -36,11 +36,10 @@
 	}
 
 	const handleNewCode = async () => {
+		const ok = await confirmModalComponent.confirm()
+
+		if (!ok) return
 		try {
-			const ok = await confirmModalComponent.confirm()
-
-			if (!ok) return
-
 			regeneratingJoinCode = true
 			const res = await fetch(`/api/workspaces/${id}/regenerate-join-code`, {
 				method: 'PATCH',
