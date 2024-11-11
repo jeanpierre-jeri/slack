@@ -19,6 +19,7 @@
 	const { name } = $derived($page.data.channel)
 	const member = $derived($page.data.member)
 
+	let open = $state(false)
 	let editOpen = $state(false)
 	let isLoading = $state(false)
 
@@ -89,6 +90,8 @@
 			await invalidateAll()
 
 			toast.success('Channel deleted')
+			editOpen = false
+			open = false
 			goto(`/workspaces/${$page.params.id}`)
 		} catch (error) {
 			console.log('Error deleting channel', error)
@@ -100,7 +103,12 @@
 </script>
 
 <div class="flex h-[49px] items-center overflow-hidden border-b bg-white px-4">
-	<Dialog>
+	<Dialog
+		{open}
+		onOpenChange={(state) => {
+			open = state
+		}}
+	>
 		<DialogTrigger asChild let:builder>
 			<Button
 				builders={[builder]}
