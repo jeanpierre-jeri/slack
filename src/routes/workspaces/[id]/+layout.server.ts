@@ -1,10 +1,9 @@
 import { getWorkspaces } from '@/services/db/workspaces'
-import type { LayoutServerLoad } from './$types'
 import { redirect } from '@sveltejs/kit'
 import { getMemberByWorkspaceIdAndUserId, getMembersByWorkspaceId } from '@/services/db/members'
 import { getChannelsByWorkspaceIdAndUserId } from '@/services/db/channels'
 
-export const load: LayoutServerLoad = async ({ locals, params }) => {
+export const load = async ({ locals, params }) => {
 	const { auth } = locals
 	const session = await auth()
 

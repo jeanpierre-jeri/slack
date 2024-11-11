@@ -44,3 +44,19 @@ export async function getWorkspaceById({ id }: { id: string }) {
 		return null
 	}
 }
+
+export async function getWorkspaceByIdPublic({ id }: { id: string }) {
+	try {
+		const client = await pool.connect()
+		const { rows } = await client.query<{ name: string }>({
+			text: `SELECT name FROM workspaces WHERE id = $1`,
+			values: [id],
+		})
+
+		client.release()
+		return rows[0]
+	} catch (error) {
+		console.error('Error fetching workspaces:', error)
+		return null
+	}
+}

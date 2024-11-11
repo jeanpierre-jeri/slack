@@ -26,7 +26,7 @@ export async function POST({ locals, params, request }) {
 		const userId = session?.user?.id
 
 		if (!userId) {
-			throw json({ message: 'Unauthorized' }, { status: 401 })
+			return json({ message: 'Unauthorized' }, { status: 401 })
 		}
 
 		const { rows } = await client.query({
@@ -37,7 +37,7 @@ export async function POST({ locals, params, request }) {
 		const workspace = rows[0]
 
 		if (workspace.joinCode !== joinCode) {
-			throw json({ message: 'Invalid join code' }, { status: 401 })
+			return json({ message: 'Invalid join code' }, { status: 401 })
 		}
 
 		const { rows: members } = await client.query({
@@ -46,7 +46,7 @@ export async function POST({ locals, params, request }) {
 		})
 
 		if (members.length > 0) {
-			throw json({ message: 'Already a member of this workspace' }, { status: 401 })
+			return json({ message: 'Already a member of this workspace' }, { status: 401 })
 		}
 
 		await client.query({

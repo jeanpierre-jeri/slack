@@ -1,8 +1,7 @@
 import { getWorkspaces } from '@/services/db/workspaces'
-import type { PageServerLoad } from './$types'
 import { redirect } from '@sveltejs/kit'
 
-export const load: PageServerLoad = async (event) => {
+export const load = async (event) => {
 	const { auth } = event.locals
 	const session = await auth()
 
