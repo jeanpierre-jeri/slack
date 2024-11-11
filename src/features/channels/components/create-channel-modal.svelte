@@ -5,6 +5,7 @@
 	import { Button } from '@/lib/components/ui/button'
 	import { toast } from 'svelte-sonner'
 	import { page } from '$app/stores'
+	import { goto, invalidateAll } from '$app/navigation'
 
 	let isLoading = $state(false)
 
@@ -31,17 +32,21 @@
 
 			if (!res.ok) {
 				const { message } = await res.json()
-				console.log('Error creating workspace', message)
+				console.log('Error creating channel', message)
 				return
 			}
 
 			const { channelId } = await res.json()
 
-			toast.success('Channel created')
+			await invalidateAll()
 
 			channelModal.value = false
+
+			toast.success('Channel created')
+
+			goto(`/workspaces/${$page.params.id}/channels/${channelId}`)
 		} catch (error) {
-			console.log('Error creating workspace', error)
+			console.log('Error creating channel', error)
 		} finally {
 			isLoading = false
 		}
@@ -63,7 +68,6 @@
 				name="name"
 				disabled={isLoading}
 				required
-				autofocus
 				minlength={3}
 				maxlength={80}
 				placeholder="e.g. plan-budget"

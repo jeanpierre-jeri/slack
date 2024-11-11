@@ -5,7 +5,7 @@
 	const { data } = $props()
 	const workspaces = $derived(data.workspaces)
 
-	$effect(() => {
+	$effect.pre(() => {
 		if (workspaces.length === 0 && !workspaceModal.value) {
 			workspaceModal.value = true
 		}

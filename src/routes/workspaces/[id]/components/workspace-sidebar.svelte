@@ -41,7 +41,12 @@
 			: undefined}
 	>
 		{#each channels as { id, name } (id)}
-			<SidebarItem label={name} icon={hash} {id} />
+			<SidebarItem
+				label={name}
+				icon={hash}
+				{id}
+				variant={$page.params.channel_id === id ? 'active' : 'default'}
+			/>
 		{/each}
 	</WorkspaceSection>
 
