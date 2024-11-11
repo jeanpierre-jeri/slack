@@ -14,6 +14,9 @@ importers:
       '@auth/sveltekit':
         specifier: 1.7.2
         version: 1.7.2(@sveltejs/kit@2.7.4(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.1.9)(vite@5.4.10(@types/node@22.8.7)))(svelte@5.1.9)(vite@5.4.10(@types/node@22.8.7)))(nodemailer@6.9.16)(svelte@5.1.9)
+      '@jimmyverburgt/svelte-input-otp':
+        specifier: 0.0.3
+        version: 0.0.3(svelte@5.1.9)
       nodemailer:
         specifier: 6.9.16
         version: 6.9.16
@@ -367,6 +370,11 @@ packages:
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
     engines: {node: '>=12'}
+
+  '@jimmyverburgt/svelte-input-otp@0.0.3':
+    resolution: {integrity: sha512-+TIG8l1W6CuZcfz22hSzQP+C2O+OXLw/hUVsB3Ab+9LHb11ew6jAGmhkXMzMe2XBoipBoy5Wv1ZeOadGsfbgkQ==}
+    peerDependencies:
+      svelte: ^4.0.0
 
   '@jridgewell/gen-mapping@0.3.5':
     resolution: {integrity: sha512-IzL8ZoEDIBRWEzlCcRhOaCupYyN5gdIK+Q6fbFdPDg6HqX6jpkItn7DFIpW9LQzXG6Df9sA7+OKnq0qlz/GaQg==}
@@ -2084,6 +2092,10 @@ snapshots:
       strip-ansi-cjs: strip-ansi@6.0.1
       wrap-ansi: 8.1.0
       wrap-ansi-cjs: wrap-ansi@7.0.0
+
+  '@jimmyverburgt/svelte-input-otp@0.0.3(svelte@5.1.9)':
+    dependencies:
+      svelte: 5.1.9
 
   '@jridgewell/gen-mapping@0.3.5':
     dependencies:
