@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Hint from '@/lib/components/hint.svelte'
 	import FaCaretDown from '@/lib/components/icons/fa-caret-down.svelte'
-	import { Button } from '@/lib/components/ui/button'
+	import { Button, buttonVariants } from '@/lib/components/ui/button'
 	import { cn } from '@/lib/utils'
 	import { PlusIcon } from 'lucide-svelte'
 	import type { Snippet } from 'svelte'
@@ -42,14 +42,17 @@
 		{#if onNew}
 			<div class="ml-auto">
 				<Hint label={hint} side="top" align="center">
-					<Button
+					<!-- svelte-ignore a11y_no_static_element_interactions -->
+					<!-- svelte-ignore a11y_click_events_have_key_events -->
+					<div
+						class={cn(
+							buttonVariants({ variant: 'transparent', size: 'iconSm' }),
+							'size-6 shrink-0 p-0.5 text-sm text-[#f9edffcc] opacity-0 transition-opacity group-hover:opacity-100',
+						)}
 						onclick={onNew}
-						variant="transparent"
-						size="iconSm"
-						class="size-6 shrink-0 p-0.5 text-sm text-[#f9edffcc] opacity-0 transition-opacity group-hover:opacity-100"
 					>
 						<PlusIcon class="size-5" />
-					</Button>
+					</div>
 				</Hint>
 			</div>
 		{/if}

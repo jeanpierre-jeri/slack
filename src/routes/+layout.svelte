@@ -12,5 +12,5 @@
 	<title>Slack</title>
 </svelte:head>
 {@render children()}
-<Toaster />
+<Toaster richColors />
 <Modals />

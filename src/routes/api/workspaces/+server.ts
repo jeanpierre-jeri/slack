@@ -30,7 +30,6 @@ export async function POST({ request, locals }) {
 			return json({ message: 'Unauthorized' }, { status: 401 })
 		}
 
-		//TODO: Create proper method later
 		const joinCode = generateCode()
 
 		const { name } = parsed.data

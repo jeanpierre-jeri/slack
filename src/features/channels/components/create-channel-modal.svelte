@@ -61,7 +61,7 @@
 		<form class="space-y-4" onsubmit={handleSubmit}>
 			<Input
 				name="name"
-				disabled={false}
+				disabled={isLoading}
 				required
 				autofocus
 				minlength={3}
@@ -74,7 +74,7 @@
 			/>
 
 			<div class="flex justify-end">
-				<Button disabled={false} type="submit">Create</Button>
+				<Button disabled={isLoading} type="submit">Create</Button>
 			</div>
 		</form>
 	</DialogContent>
