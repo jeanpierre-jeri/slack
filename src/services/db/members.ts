@@ -44,7 +44,7 @@ export async function getMemberByWorkspaceIdAndUserId({
 		client.release()
 		return rows[0]
 	} catch (error) {
-		console.error('Error fetching workspace members:', error)
+		console.error('Error fetching workspace member:', error)
 		return null
 	}
 }

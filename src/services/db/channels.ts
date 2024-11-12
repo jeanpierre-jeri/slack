@@ -33,7 +33,7 @@ export async function getChannelsByWorkspaceIdAndUserId({
 
 		return rows
 	} catch (error) {
-		console.error('Error fetching workspace members:', error)
+		console.error('Error fetching workspace channels:', error)
 		return []
 	}
 }
